@@ -5,10 +5,33 @@ use Slim\Http\Response;
 
 // Routes
 
-$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
-    // Sample log message
+
+$app->get('/status', function (Request $req, Response $res, array $arg) {
     $this->logger->info("Slim-Skeleton '/' route");
 
-    // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+    $data = array('status' => "Populate this with door or system status.");
+    $res = $res->withJson($data);
+    return $res;
+});
+
+$app->get('/command/open', function (Request $req, Response $res, array $arg) {
+    $this->logger->info("Slim-Skeleton '/' route");
+
+    $data = array(
+        'status' => "Populate this with door OPEN action confirmation and success or failure.",
+        'action' => "OPEN"
+    );
+    $res = $res->withJson($data);
+    return $res;
+});
+
+$app->get('/command/close', function (Request $req, Response $res, array $arg) {
+    $this->logger->info("Slim-Skeleton '/' route");
+
+    $data = array(
+        'status' => "Populate this with door CLOSE action confirmation and success or failure.",
+        'action' => "CLOSE"
+    );
+    $res = $res->withJson($data);
+    return $res;
 });
