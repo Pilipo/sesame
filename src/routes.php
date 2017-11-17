@@ -16,6 +16,9 @@ $dotenv->load();
 $app->get('/status', function (Request $req, Response $res, array $arg) {
     $this->logger->info("Slim-Skeleton '/' route");
 
+    // Check for listening services
+    
+
     $data = array('status' => "Populate this with door or system status.");
     $res = $res->withJson($data);
     return $res;
